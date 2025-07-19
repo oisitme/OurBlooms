@@ -1,4 +1,6 @@
 import React from 'react'
+import RazorpayReact from '../Components/RazorpayReact';
+import CalendarPicker from '../Components/CalendarPicker';
 
 const Contact = () => {
   return (
@@ -37,6 +39,8 @@ const Contact = () => {
           <button type="submit" className="bg-amber-500 text-white font-semibold rounded-xl py-2 mt-2 hover:bg-amber-600 transition-colors">Send Message</button>
         </form>
       </div>
+      <RazorpayReact />
+      
     </div>
   );
 };

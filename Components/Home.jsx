@@ -58,6 +58,7 @@ const Home = () => {
           className="inline-block w-64 h-64 mx-5 rounded-4xl shadow-lg hover:scale-105 transition-all duration-300"
         ></img>
       </div>
+      <button onClick={()=>navigate('/consultation')} className="mt-10 block mx-auto bg-amber-600 px-4 py-2 rounded-3xl text-white font-semibold hover:bg-amber-400 cursor-pointer hover:scale-110 transition-all duration-200">Book A Consultation</button>
       <div className="flex flex-col justify-center items-center mt-10">
         <h1 className="text-5xl font-bold text-center"> WHAT WE DO</h1>
         <p className="mt-10 text-center p-5">We bring a touch of that simple magic into your world.</p>
