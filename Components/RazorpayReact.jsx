@@ -27,9 +27,9 @@ const RazorpayReact = () => {
 
     const options = {
       key: "rzp_test_DE46VIVQUwPF9T", // Enter the Key ID generated from the Dashboard
-      amount: 100, // Amount is in currency subunits. 50000 = 500.00 INR
+      amount: 5000, // Amount is in currency subunits. 50000 = 500.00 INR
       currency: "INR",
-      name: "Acme Corp",
+      name: "Our Blooms",
       description: "Test Transaction",
       image: "https://your-logo-url.com/logo.png", // Optional: replace with your logo
       handler: function (response) {
@@ -37,12 +37,12 @@ const RazorpayReact = () => {
         // You can also send this response to your backend for verification
       },
       prefill: {
-        name: "John Doe",
-        email: "john.doe@example.com",
-        contact: "9999999999",
+        name: "Raushan kumar",
+        email: "raushankumarsam500@gmail.com",
+        contact: "7065508384",
       },
       notes: {
-        address: "Acme Corp Office",
+        address: "Swatantra Nagar Our Blooms Office",
       },
       theme: {
         color: "#3399cc",
