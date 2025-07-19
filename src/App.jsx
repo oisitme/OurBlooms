@@ -28,6 +28,7 @@ function App(){
           <Route path='/contact' element={<Contact />} />
           <Route path='/consultation' element={<Consultation />} />
         </Routes>
+      
         <Footer />
         </>
         

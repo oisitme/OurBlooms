@@ -1,7 +1,7 @@
 import React from 'react'
 import {NavLink,useNavigate} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faTimes, faHouse } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 
 const Navbar=()=>{
@@ -10,11 +10,9 @@ const[menuOpen,setMenuOpen]= useState(false);
 
     return(
     <>
-     <div className='flex justify-between items-center bg-white px-10 py-5 fixed top-0 left-0 w-full z-50 shadow'> 
-     <p  onClick={() => navigate('/')}>
-        <span className='block text-3xl md:hidden'>O.B</span>
-        <span className='hidden text-4xl font-semibold md:block'>Our Blooms</span>
-     </p>
+     <div className='flex justify-between items-center bg-white px-10 py-5 fixed top-0 left-0 w-full z-50 shadow'>      
+        <button onClick={() => navigate('/')} className=' text-2xl  '><FontAwesomeIcon icon={faHouse} /></button>       
+     
      <button className='md:hidden' onClick={()=> setMenuOpen(!menuOpen)} aria-label='Toggel menu'>
       <FontAwesomeIcon icon={menuOpen ? faTimes:faBars} size="2x" />
      </button>
