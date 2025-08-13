@@ -1,8 +1,55 @@
-import React from 'react'
+import React, { useState } from 'react'
+import emailjs from '@emailjs/browser';
 import RazorpayReact from '../Components/RazorpayReact';
 import CalendarPicker from '../Components/CalendarPicker';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState('');
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('');
+
+    try {
+      
+      const result = await emailjs.send(
+        'service_edxijph', 
+        'template_tyen59e', 
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: 'trashhwork@gmail.com', 
+        },
+        'wNISsR78GTKFnabA5' 
+      );
+
+      if (result.status === 200) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      }
+    } catch (error) {
+      console.error('Email send failed:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white py-16 mt-10 px-4">
       <h1 className="text-4xl font-bold text-amber-600 mb-6">Contact Us</h1>
@@ -32,15 +79,51 @@ const Contact = () => {
           </div>
         </div>
         {/* Contact Form */}
-        <form className="flex-1 flex flex-col gap-4" onSubmit={e => e.preventDefault()}>
-          <input type="text" placeholder="Your Name" className="rounded-xl border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400" required />
-          <input type="email" placeholder="Your Email" className="rounded-xl border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400" required />
-          <textarea placeholder="Your Message" rows={4} className="rounded-xl border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400" required></textarea>
-          <button type="submit" className="bg-amber-500 text-white font-semibold rounded-xl py-2 mt-2 hover:bg-amber-600 transition-colors">Send Message</button>
+        <form className="flex-1 flex flex-col gap-4" onSubmit={handleSubmit}>
+          <input 
+            type="text" 
+            name="name"
+            placeholder="Your Name" 
+            value={formData.name}
+            onChange={handleInputChange}
+            className="rounded-xl border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400" 
+            required 
+          />
+          <input 
+            type="email" 
+            name="email"
+            placeholder="Your Email" 
+            value={formData.email}
+            onChange={handleInputChange}
+            className="rounded-xl border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400" 
+            required 
+          />
+          <textarea 
+            name="message"
+            placeholder="Your Message" 
+            rows={4} 
+            value={formData.message}
+            onChange={handleInputChange}
+            className="rounded-xl border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400" 
+            required
+          ></textarea>
+          
+          {submitStatus === 'success' && (
+            <div className="text-green-600 text-sm text-center">Message sent successfully!</div>
+          )}
+          {submitStatus === 'error' && (
+            <div className="text-red-600 text-sm text-center">Failed to send message. Please try again.</div>
+          )}
+          
+          <button 
+            type="submit" 
+            disabled={isSubmitting}
+            className="bg-amber-500 text-white font-semibold rounded-xl py-2 mt-2 hover:bg-amber-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isSubmitting ? 'Sending...' : 'Send Message'}
+          </button>
         </form>
       </div>
-      
-      
     </div>
   );
 };
