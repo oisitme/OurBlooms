@@ -4,7 +4,7 @@ import ob4 from './ob4.webp';
 import ob6 from './ob6.webp';
 import ob7 from './ob7.webp';
 import ob8 from './ob8.webp';
-import ob1 from './ob1.webp';
+import ob1 from './Ob1.webp';
 import ob3 from './ob3.webp';
 import obb from './obb.webp';
 import obb1 from './obb1.webp';
