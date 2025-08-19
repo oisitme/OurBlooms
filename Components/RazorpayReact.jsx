@@ -1,8 +1,8 @@
 import React from "react";
 
 const RazorpayReact = () => {
-  // Replace this with your actual Razorpay Key ID
-  const RAZORPAY_KEY_ID = "rzp_test_DE46VIVQUwPF9T";
+  
+  const RAZORPAY_KEY_ID = import.meta.env.VITE_RAZORPAY_KEY_ID;
 
   const loadRazorpayScript = () => {
     return new Promise((resolve) => {
@@ -26,15 +26,15 @@ const RazorpayReact = () => {
     }
 
     const options = {
-      key: "rzp_test_DE46VIVQUwPF9T", // Enter the Key ID generated from the Dashboard
-      amount: 5000, // Amount is in currency subunits. 50000 = 500.00 INR
+      key: RAZORPAY_KEY_ID, 
+      amount: 5000, 
       currency: "INR",
       name: "Our Blooms",
       description: "Test Transaction",
-      image: "https://your-logo-url.com/logo.png", // Optional: replace with your logo
+      image: "https://your-logo-url.com/logo.png", 
       handler: function (response) {
         alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
-        // You can also send this response to your backend for verification
+        
       },
       prefill: {
         name: "Raushan kumar",

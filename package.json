@@ -1,6 +1,5 @@
 {
-  "name": "vite-project",
-  "homepage": "https://oisitme.github.io/OurBlooms/",
+  "name": "vite-project",  
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,16 +7,14 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"   
+    
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
-    "@tailwindcss/vite": "^4.1.11",
-    "gh-pages": "^6.3.0",
+    "@tailwindcss/vite": "^4.1.11",    
     "react": "^19.1.0",
     "react-datepicker": "^8.4.0",
     "react-dom": "^19.1.0",
